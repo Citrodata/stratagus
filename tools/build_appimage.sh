@@ -47,7 +47,7 @@ if [ -n "$CENTOS" ]; then
 else
     export DEBIAN_FRONTEND=noninteractive
     # ubuntu (>= 18.04) build tools
-    apt-get update && apt-get install -yy git build-essential cmake wget fuse libfuse-dev libfuse2-dev
+    apt-get update && apt-get install -yy git build-essential cmake wget fuse libfuse-dev
     apt-get install -yy zlib1g-dev file libbz2-dev libpng-dev libopus-dev libtheora-dev
     # ubuntu SDL dependencies
     apt-get install -yy libx11-dev libxext-dev libxrandr-dev libxi-dev libxfixes-dev libxcursor-dev
@@ -139,27 +139,19 @@ if [ -n "$CENTOS" ]; then
         popd
     fi
 else
-    # using appimage-builder
-    echo    "version: 1" > appimagebuilder.yaml
-    echo    "AppDir:" >> appimagebuilder.yaml
-    echo    "    path: ./AppDir" >> appimagebuilder.yaml
-    echo    "    app_info:" >> appimagebuilder.yaml
-    echo    "        id: com.stratagus.${GAME_ID}" >> appimagebuilder.yaml
-    echo    "        name: '${GAME_NAME}'" >> appimagebuilder.yaml
-    echo    "        icon: '${GAME_ID}'" >> appimagebuilder.yaml
-    echo    "        version: '${GAME_VERSION}'" >> appimagebuilder.yaml
-    echo    "        exec: usr/bin/${GAME_ID}" >> appimagebuilder.yaml
-    echo    "        exec_args: '\"--argv0=\$APPDIR/usr/bin/${GAME_ID}\" \$@'" >> appimagebuilder.yaml
-    echo    "AppImage:" >> appimagebuilder.yaml
-    echo    "    arch: '${GAME_ARCH}'" >> appimagebuilder.yaml
-    APPIMAGEBUILDER=`which appimage-builder || true`
-    if [ -z "$APPIMAGEBUILDER" ]; then
-        wget https://github.com/AppImageCrafters/appimage-builder/releases/download/v1.1.0/appimage-builder-1.1.0-x86_64.AppImage
-        chmod +x appimage-builder-1.1.0-x86_64.AppImage
-        APPIMAGEBUILDER=$(pwd)/appimage-builder-1.1.0-x86_64.AppImage
-    fi
-    $APPIMAGEBUILDER --appimage-extract-and-run --recipe appimagebuilder.yaml
-    rm -f ./appimage-builder-1.1.0-x86_64.AppImage
+    # using linuxdeploy
+    echo '#!/bin/sh' > AppDir/AppRun
+    echo -n 'exec $APPDIR/usr/bin/' >> AppDir/AppRun
+    echo -n "${GAME_ID}" >> AppDir/AppRun
+    echo -n ' --argv0=$APPDIR/usr/bin/' >> AppDir/AppRun
+    echo -n "${GAME_ID}" >> AppDir/AppRun
+    echo ' $@' >> AppDir/AppRun
+    chmod +x AppDir/AppRun
+    cat AppDir/AppRun
+    curl -L -O "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage"
+    chmod +x linuxdeploy-x86_64.AppImage
+    ./linuxdeploy-x86_64.AppImage --appimage-extract-and-run --appdir AppDir --output appimage
+    rm -f ./linuxdeploy-x86_64.AppImage
     if [ -n "$GITHUB_REF" ]; then
         cp *.AppImage "../${GAME_ID}-x86_64.AppImage"
         popd
