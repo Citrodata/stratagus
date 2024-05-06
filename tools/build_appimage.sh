@@ -82,7 +82,8 @@ if [ "$GAME_ID" == stargus]; then
     cd Stormlib
     cmake CMakeLists.txt
     make
-    make install 
+    make install
+    cd
 fi
 
 
