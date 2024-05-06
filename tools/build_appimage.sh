@@ -46,13 +46,13 @@ if [ -n "$CENTOS" ]; then
     yum install -yy wayland-devel
 else
     # ubuntu (>= 18.04) build tools
-    sudo apt-get update && apt-get install -yy git build-essential
-    sudo apt-get install -yy zlib1g-dev file
+    apt-get update && apt-get install -yy git build-essential
+    apt-get install -yy zlib1g-dev file
     # ubuntu SDL dependencies
-    sudo apt-get install -yy libx11-dev libxext-dev libxrandr-dev libxi-dev libxfixes-dev libxcursor-dev libpng-dev
-    sudo apt-get install -yy libpulse-dev
-    sudo apt-get install -yy libgl1-mesa-dev libgles2-mesa-dev
-    sudo apt-get install -yy libwayland-dev
+    apt-get install -yy libx11-dev libxext-dev libxrandr-dev libxi-dev libxfixes-dev libxcursor-dev libpng-dev
+    apt-get install -yy libpulse-dev
+    apt-get install -yy libgl1-mesa-dev libgles2-mesa-dev
+    apt-get install -yy libwayland-dev
 fi
 
 if [ -n "$CENTOS" ]; then
