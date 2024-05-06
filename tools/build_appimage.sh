@@ -158,6 +158,10 @@ else
         chmod +x appimage-builder-1.1.0-x86_64.AppImage
         APPIMAGEBUILDER=$(pwd)/appimage-builder-1.1.0-x86_64.AppImage
     fi
-    $APPIMAGEBUILDER --recipe appimagebuilder.yaml
+    $APPIMAGEBUILDER --appimage-extract-and-run --recipe appimagebuilder.yaml --output appimage
     rm -f ./appimage-builder-1.1.0-x86_64.AppImage
+    if [ -n "$GITHUB_REF" ]; then
+        cp *.AppImage "../${GAME_ID}-x86_64.AppImage"
+        popd
+    fi
 fi
