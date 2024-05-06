@@ -84,6 +84,7 @@ if [ -n "$GITHUB_REF" ]; then
     pushd stratagus
     git fetch origin "${GITHUB_REF}"
     git checkout FETCH_HEAD
+    cp ../stargus.png ./stargus.png
 fi
 
 git clone --depth 1 https://github.com/Wargus/${GAME_ID}
