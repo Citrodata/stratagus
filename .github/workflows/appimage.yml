@@ -32,6 +32,7 @@ jobs:
             run: make
           - name: Install Stormlib
             run: make install
+      - uses: actions/checkout@v3
       - name: Build game ${{ matrix.game.id }}
         run: bash -x ./tools/build_appimage.sh ${{ matrix.game.id }} ${{ matrix.game.name }}
       - name: Archive production artifacts
