@@ -47,7 +47,7 @@ if [ -n "$CENTOS" ]; then
 else
     export DEBIAN_FRONTEND=noninteractive
     # ubuntu (>= 18.04) build tools
-    apt-get update && apt-get install -yy git build-essential cmake wget curl
+    apt-get update && apt-get install -yy git build-essential cmake wget curl imagemagick
     apt-get install -yy zlib1g-dev file libbz2-dev libpng-dev libopus-dev libtheora-dev
     # ubuntu SDL dependencies
     apt-get install -yy libx11-dev libxext-dev libxrandr-dev libxi-dev libxfixes-dev libxcursor-dev
