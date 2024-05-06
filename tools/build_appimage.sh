@@ -31,9 +31,6 @@ if [ -z "$GAME_VERSION" ]; then
         export GAME_VERSION="$(head -1 debian/changelog | cut -f2 -d' ' | sed 's/(//' | sed 's/)//')"
     fi
 fi
-if [ "$GAME_ID" = stargus ]; then
-    echo 'Needs to install Stormlib'
-fi
 export GAME_ARCH=$(uname -m)
 
 CENTOS=`cat /etc/centos-release || true`
