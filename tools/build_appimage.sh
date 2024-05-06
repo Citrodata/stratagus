@@ -68,7 +68,7 @@ if [ -n "$CENTOS" ]; then
 fi
 
 if [ "$GAME_ID" = stargus ]; then
-    git clone --depth 1 https://github.com/ladislav-zezula/StormLib
+    git clone https://github.com/ladislav-zezula/StormLib
     pushd StormLib
         git checkout v9.25
         cmake CMakeLists.txt
