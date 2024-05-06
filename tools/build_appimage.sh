@@ -84,7 +84,6 @@ if [ -n "$GITHUB_REF" ]; then
     pushd stratagus
     git fetch origin "${GITHUB_REF}"
     git checkout FETCH_HEAD
-    cp ../stargus.png ./stargus.png
 fi
 
 git clone --depth 1 https://github.com/Wargus/${GAME_ID}
@@ -119,6 +118,9 @@ pushd ${GAME_ID}
             -DICONDIR=/usr/share/pixmaps/                               \
             -DGAMEDIRABS=""
         make -j$(nproc) install DESTDIR=../../AppDir
+        if ["$GAME_ID" = stargus]; then
+            cp stargus-0.png stargus.png
+        fi
         popd
     popd
 if [ -n "$CENTOS" ]; then
