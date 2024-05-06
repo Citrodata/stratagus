@@ -17,7 +17,7 @@ jobs:
     container: centos:7
 
     stormlib:
-      if: matrix.game.id == 'stargus':
+      if: matrix.game.id == 'stargus'
         runs-on: ubuntu-20.04
         steps:
           - uses: actions/checkout@v3
