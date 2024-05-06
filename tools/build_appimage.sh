@@ -48,9 +48,9 @@ else
     export DEBIAN_FRONTEND=noninteractive
     # ubuntu (>= 18.04) build tools
     apt-get update && apt-get install -yy git build-essential cmake
-    apt-get install -yy zlib1g-dev file
+    apt-get install -yy zlib1g-dev file libbz2-dev libpng-dev libopus-dev libtheora-dev
     # ubuntu SDL dependencies
-    apt-get install -yy libx11-dev libxext-dev libxrandr-dev libxi-dev libxfixes-dev libxcursor-dev libpng-dev
+    apt-get install -yy libx11-dev libxext-dev libxrandr-dev libxi-dev libxfixes-dev libxcursor-dev
     apt-get install -yy libpulse-dev
     apt-get install -yy libgl1-mesa-dev libgles2-mesa-dev
     apt-get install -yy libwayland-dev
