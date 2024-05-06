@@ -40,7 +40,7 @@ if [ -n "$CENTOS" ]; then
     yum install -yy zlib-devel file
     source /opt/rh/devtoolset-7/enable
     # centos SDL dependencies
-    yum install -yy libX11-devel libXext-devel libXrandr-devel libXi-devel libXfixes-devel libXcursor-devel
+    yum install -yy libX11-devel libXext-devel libXrandr-devel libXi-devel libXfixes-devel libXcursor-devel libpng-devel
     yum install -yy pulseaudio-libs-devel
     yum install -yy mesa-libGL-devel
     yum install -yy wayland-devel
@@ -49,7 +49,7 @@ else
     sudo apt-get update && apt-get install -yy git build-essential
     sudo apt-get install -yy zlib1g-dev file
     # ubuntu SDL dependencies
-    sudo apt-get install -yy libx11-dev libxext-dev libxrandr-dev libxi-dev libxfixes-dev libxcursor-dev
+    sudo apt-get install -yy libx11-dev libxext-dev libxrandr-dev libxi-dev libxfixes-dev libxcursor-dev libpng-dev
     sudo apt-get install -yy libpulse-dev
     sudo apt-get install -yy libgl1-mesa-dev libgles2-mesa-dev
     sudo apt-get install -yy libwayland-dev
