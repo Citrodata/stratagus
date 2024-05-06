@@ -18,6 +18,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Install Stormlib for Stargus
+        if: matrix.game.id == 'stargus'
+        steps:
+          - uses: actions/checkout@v3
+          - name: Pull Stormlib
+            run: git clone --depth=1 https://github.com/ladislav-zezula/StormLib.git
+          - name: Change directory to Stormlib
+            run: cd StormLib
+          - name: Generate CMake for Stormlib
+            run: cmake CMakeLists.txt
+          - name: Build Stormlib
+            run: make
+          - name: Install Stormlib
+            run: make install
       - name: Build game ${{ matrix.game.id }}
         run: bash -x ./tools/build_appimage.sh ${{ matrix.game.id }} ${{ matrix.game.name }}
       - name: Archive production artifacts
