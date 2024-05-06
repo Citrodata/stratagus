@@ -46,7 +46,7 @@ if [ -n "$CENTOS" ]; then
     yum install -yy wayland-devel
 else
     # ubuntu (>= 18.04) build tools
-    apt-get update && apt-get install -yy git build-essential
+    apt-get update && apt-get install -yy git build-essential cmake
     apt-get install -yy zlib1g-dev file
     # ubuntu SDL dependencies
     apt-get install -yy libx11-dev libxext-dev libxrandr-dev libxi-dev libxfixes-dev libxcursor-dev libpng-dev
