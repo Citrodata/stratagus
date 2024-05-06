@@ -73,7 +73,7 @@ if [ "$GAME_ID" = stargus ]; then
     pushd StormLib
         git checkout v9.25
         cmake CMakeLists.txt
-        make
+        make -j4
         make install
         popd
 fi
