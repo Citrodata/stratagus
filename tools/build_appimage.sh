@@ -105,7 +105,6 @@ git clone --depth 1 https://github.com/Wargus/${GAME_ID}
 pushd ${GAME_ID}
     git submodule update --init --recursive
     mkdir build
-    cp ../stargus.png ./build/stargus.png
     pushd build
         cmake ..                                                        \
             -DENABLE_VENDORED_LIBS=ON                                   \
