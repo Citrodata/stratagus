@@ -79,11 +79,10 @@ fi
 
 if [ "$GAME_ID" = stargus ]; then
     git clone --depth 1 https://github.com/ladislav-zezula/StormLib
-    cd Stormlib
+    pushd stratagus
     cmake CMakeLists.txt
     make
     make install
-    cd
 fi
 
 
