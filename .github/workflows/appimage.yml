@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: 'https://github.com/ladislav-zezula/StormLib.git'
+          repository: 'ladislav-zezula/StormLib'
       - name: Generate CMake for Stormlib
         run: cmake CMakeLists.txt
       - name: Build Stormlib
