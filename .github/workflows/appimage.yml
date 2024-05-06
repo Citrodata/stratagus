@@ -18,9 +18,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Install Stormlib for Stargus
-        uses: actions/checkout@v3
         if: matrix.game.id == 'stargus'
+        runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v3
           - name: Pull Stormlib
