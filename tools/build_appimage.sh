@@ -69,7 +69,7 @@ fi
 
 if [ "$GAME_ID" = stargus ]; then
     git clone --depth 1 https://github.com/ladislav-zezula/StormLib
-    pushd StormLib \
+    pushd StormLib
         cmake CMakeLists.txt
         make
         make install
