@@ -67,6 +67,16 @@ if [ -n "$CENTOS" ]; then
         popd
 fi
 
+if [ "$GAME_ID" = stargus ]; then
+    git clone --depth 1 https://github.com/ladislav-zezula/StormLib
+    pushd StormLib \
+        cmake CMakeLists.txt
+        make
+        make install
+        popd
+fi
+
+
 if [ -n "$CENTOS" ]; then
     if [ -n "$GITHUB_REF" ]; then
         git clone https://github.com/Wargus/stratagus
@@ -75,17 +85,6 @@ if [ -n "$CENTOS" ]; then
         git checkout FETCH_HEAD
     fi
 fi
-
-
-if [ "$GAME_ID" = stargus ]; then
-    git clone --depth 1 https://github.com/ladislav-zezula/StormLib
-    pushd stratagus \
-        cmake CMakeLists.txt
-        make
-        make install
-        popd
-fi
-
 
 git clone --depth 1 https://github.com/Wargus/${GAME_ID}
 
