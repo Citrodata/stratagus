@@ -47,7 +47,7 @@ if [ -n "$CENTOS" ]; then
 else
     export DEBIAN_FRONTEND=noninteractive
     # ubuntu (>= 18.04) build tools
-    apt-get update && apt-get install -yy git build-essential cmake wget fuse libfuse-dev
+    apt-get update && apt-get install -yy git build-essential cmake wget fuse libfuse-dev libfuse2-dev
     apt-get install -yy zlib1g-dev file libbz2-dev libpng-dev libopus-dev libtheora-dev
     # ubuntu SDL dependencies
     apt-get install -yy libx11-dev libxext-dev libxrandr-dev libxi-dev libxfixes-dev libxcursor-dev
@@ -158,7 +158,7 @@ else
         chmod +x appimage-builder-1.1.0-x86_64.AppImage
         APPIMAGEBUILDER=$(pwd)/appimage-builder-1.1.0-x86_64.AppImage
     fi
-    $APPIMAGEBUILDER --appimage-extract-and-run --recipe appimagebuilder.yaml --output appimage
+    $APPIMAGEBUILDER --appimage-extract-and-run --recipe appimagebuilder.yaml
     rm -f ./appimage-builder-1.1.0-x86_64.AppImage
     if [ -n "$GITHUB_REF" ]; then
         cp *.AppImage "../${GAME_ID}-x86_64.AppImage"
