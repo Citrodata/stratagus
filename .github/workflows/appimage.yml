@@ -16,20 +16,21 @@ jobs:
     runs-on: ubuntu-20.04
     container: centos:7
 
-    if: matrix.game.id == 'stargus':
-      runs-on: ubuntu-20.04
-      steps:
-        - uses: actions/checkout@v3
-        - name: Pull Stormlib
-          run: git clone --depth=1 https://github.com/ladislav-zezula/StormLib.git
-        - name: Change directory to Stormlib
-          run: cd StormLib
-        - name: Generate CMake for Stormlib
-          run: cmake CMakeLists.txt
-        - name: Build Stormlib
-          run: make
-        - name: Install Stormlib
-          run: make install
+    stormlib:
+      if: matrix.game.id == 'stargus':
+        runs-on: ubuntu-20.04
+        steps:
+          - uses: actions/checkout@v3
+          - name: Pull Stormlib
+            run: git clone --depth=1 https://github.com/ladislav-zezula/StormLib.git
+          - name: Change directory to Stormlib
+            run: cd StormLib
+          - name: Generate CMake for Stormlib
+            run: cmake CMakeLists.txt
+          - name: Build Stormlib
+            run: make
+          - name: Install Stormlib
+            run: make install
 
     steps:
       - uses: actions/checkout@v3
