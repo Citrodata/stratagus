@@ -18,16 +18,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Pull Stormlib
-        run: git clone --depth=1 https://github.com/ladislav-zezula/StormLib.git
-      - name: Change directory to Stormlib
-        run: cd StormLib
+        with:
+          repository: 'https://github.com/ladislav-zezula/StormLib.git'
       - name: Generate CMake for Stormlib
         run: cmake CMakeLists.txt
       - name: Build Stormlib
         run: make
       - name: Install Stormlib
         run: make install
+      - uses: actions/checkout@v3
       - name: Build game ${{ matrix.game.id }}
         run: bash -x ./tools/build_appimage.sh ${{ matrix.game.id }} ${{ matrix.game.name }}
       - name: Archive production artifacts
