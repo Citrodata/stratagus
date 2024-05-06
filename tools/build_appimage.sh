@@ -105,6 +105,7 @@ git clone --depth 1 https://github.com/Wargus/${GAME_ID}
 pushd ${GAME_ID}
     git submodule update --init --recursive
     mkdir build
+    cp ../stargus.png ./build/stargus.png
     pushd build
         cmake ..                                                        \
             -DENABLE_VENDORED_LIBS=ON                                   \
@@ -119,7 +120,6 @@ pushd ${GAME_ID}
         make -j$(nproc) install DESTDIR=../../AppDir
         popd
     popd
-
 if [ -n "$CENTOS" ]; then
     # using linuxdeploy
     echo '#!/bin/sh' > AppDir/AppRun
