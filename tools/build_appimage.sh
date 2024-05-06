@@ -45,6 +45,7 @@ if [ -n "$CENTOS" ]; then
     yum install -yy mesa-libGL-devel
     yum install -yy wayland-devel
 else
+    export DEBIAN_FRONTEND=noninteractive
     # ubuntu (>= 18.04) build tools
     apt-get update && apt-get install -yy git build-essential cmake
     apt-get install -yy zlib1g-dev file
